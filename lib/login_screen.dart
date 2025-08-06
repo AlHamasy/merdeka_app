@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:merdeka_app/components/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -110,10 +111,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(8)
                         )
                       ),
-                      onPressed: (){}, 
+                      onPressed: (){},
                       child: Text("Login")
                   ),
-                )
+                ),
+
               ],
             ),
           ),
@@ -194,78 +196,78 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 16),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text("Password")
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(8)
-                    ),
-                    focusedBorder:  OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                        borderRadius: BorderRadius.circular(8)
-                    ),
-                  ),
-                ),
-                SizedBox(height: 16),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text("Password")
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(8)
-                    ),
-                    focusedBorder:  OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                        borderRadius: BorderRadius.circular(8)
-                    ),
-                  ),
-                ),
-                SizedBox(height: 16),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text("Password")
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(8)
-                    ),
-                    focusedBorder:  OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                        borderRadius: BorderRadius.circular(8)
-                    ),
-                  ),
-                ),
-                SizedBox(height: 16),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text("Password")
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(8)
-                    ),
-                    focusedBorder:  OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                        borderRadius: BorderRadius.circular(8)
-                    ),
-                  ),
-                ),
+                // SizedBox(height: 16),
+                // Align(
+                //     alignment: Alignment.centerLeft,
+                //     child: Text("Password")
+                // ),
+                // TextField(
+                //   decoration: InputDecoration(
+                //     hintText: "Password",
+                //     enabledBorder: OutlineInputBorder(
+                //         borderSide: BorderSide(color: Colors.grey),
+                //         borderRadius: BorderRadius.circular(8)
+                //     ),
+                //     focusedBorder:  OutlineInputBorder(
+                //         borderSide: BorderSide(color: Colors.blue),
+                //         borderRadius: BorderRadius.circular(8)
+                //     ),
+                //   ),
+                // ),
+                // SizedBox(height: 16),
+                // Align(
+                //     alignment: Alignment.centerLeft,
+                //     child: Text("Password")
+                // ),
+                // TextField(
+                //   decoration: InputDecoration(
+                //     hintText: "Password",
+                //     enabledBorder: OutlineInputBorder(
+                //         borderSide: BorderSide(color: Colors.grey),
+                //         borderRadius: BorderRadius.circular(8)
+                //     ),
+                //     focusedBorder:  OutlineInputBorder(
+                //         borderSide: BorderSide(color: Colors.blue),
+                //         borderRadius: BorderRadius.circular(8)
+                //     ),
+                //   ),
+                // ),
+                // SizedBox(height: 16),
+                // Align(
+                //     alignment: Alignment.centerLeft,
+                //     child: Text("Password")
+                // ),
+                // TextField(
+                //   decoration: InputDecoration(
+                //     hintText: "Password",
+                //     enabledBorder: OutlineInputBorder(
+                //         borderSide: BorderSide(color: Colors.grey),
+                //         borderRadius: BorderRadius.circular(8)
+                //     ),
+                //     focusedBorder:  OutlineInputBorder(
+                //         borderSide: BorderSide(color: Colors.blue),
+                //         borderRadius: BorderRadius.circular(8)
+                //     ),
+                //   ),
+                // ),
+                // SizedBox(height: 16),
+                // Align(
+                //     alignment: Alignment.centerLeft,
+                //     child: Text("Password")
+                // ),
+                // TextField(
+                //   decoration: InputDecoration(
+                //     hintText: "Password",
+                //     enabledBorder: OutlineInputBorder(
+                //         borderSide: BorderSide(color: Colors.grey),
+                //         borderRadius: BorderRadius.circular(8)
+                //     ),
+                //     focusedBorder:  OutlineInputBorder(
+                //         borderSide: BorderSide(color: Colors.blue),
+                //         borderRadius: BorderRadius.circular(8)
+                //     ),
+                //   ),
+                // ),
 
                 Align(
                     alignment: Alignment.centerRight,
@@ -289,7 +291,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: (){},
                       child: Text("Login")
                   ),
-                )
+                ),
+                CustomButton(
+                    title: "Test Login",
+                    color: Colors.green,
+                    onPressed: (){}
+                ),
+                CustomButton(
+                    title: "Test Login",
+                    radius: 16,
+                    onPressed: (){}
+                ),
               ],
             ),
           ),

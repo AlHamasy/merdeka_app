@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:merdeka_app/bottom_nav_screen.dart';
 import 'package:merdeka_app/latihan_row_screen.dart';
 import 'package:merdeka_app/latihan_screen.dart';
+import 'package:merdeka_app/list_screen.dart';
 import 'package:merdeka_app/login_screen.dart';
+import 'package:merdeka_app/tabbar_screen.dart';
+import 'package:merdeka_app/velocityx_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const LoginScreen(),
+      home: MyHomePage(title: "test"),
     );
   }
 }

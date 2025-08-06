@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:merdeka_app/components/custom_button.dart';
+import 'package:merdeka_app/model/LoginRequest.dart';
+import 'package:merdeka_app/services/login_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -9,6 +11,19 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  late TextEditingController emailController, passwordController;
+  bool isObscurePassword = true;
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -166,6 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text("Email/Username")
                 ),
                 TextField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     hintText: "Masukkan username atau email",
                     enabledBorder: OutlineInputBorder(
@@ -184,6 +200,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text("Password")
                 ),
                 TextField(
+                  obscureText: isObscurePassword,
+                  controller: passwordController,
                   decoration: InputDecoration(
                     hintText: "Password",
                     enabledBorder: OutlineInputBorder(
@@ -194,8 +212,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderSide: BorderSide(color: Colors.blue),
                         borderRadius: BorderRadius.circular(8)
                     ),
+                    suffixIcon: IconButton(
+                        onPressed: (){
+                          setState(() {
+                            isObscurePassword = !isObscurePassword;
+                          });
+                        },
+                        icon: Icon(isObscurePassword ? Icons.visibility_off : Icons.visibility)
+                    )
                   ),
                 ),
+
                 // SizedBox(height: 16),
                 // Align(
                 //     alignment: Alignment.centerLeft,
@@ -279,28 +306,32 @@ class _LoginScreenState extends State<LoginScreen> {
                     )
                 ),
                 SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)
-                          )
-                      ),
-                      onPressed: (){},
-                      child: Text("Login")
-                  ),
-                ),
-                CustomButton(
-                    title: "Test Login",
-                    color: Colors.green,
-                    onPressed: (){}
-                ),
-                CustomButton(
-                    title: "Test Login",
-                    radius: 16,
-                    onPressed: (){}
+                // SizedBox(
+                //   width: double.infinity,
+                //   child: ElevatedButton(
+                //       style: ElevatedButton.styleFrom(
+                //           backgroundColor: Colors.blue,
+                //           shape: RoundedRectangleBorder(
+                //               borderRadius: BorderRadius.circular(8)
+                //           )
+                //       ),
+                //       onPressed: (){},
+                //       child: Text("Login")
+                //   ),
+                // ),
+                // CustomButton(
+                //     title: "Test Login",
+                //     color: Colors.green,
+                //     onPressed: (){}
+                // ),
+                isLoading
+                    ? CircularProgressIndicator()
+                    : CustomButton(
+                        title: "Login",
+                        radius: 16,
+                        onPressed: (){
+                          actionLogin();
+                        }
                 ),
               ],
             ),
@@ -310,6 +341,42 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  void actionLogin() async {
+    var email = emailController.text;
+    var password = passwordController.text;
 
+    if (email.isEmpty || password.isEmpty){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Silahkan lengkapi yang kosong", style: TextStyle(color: Colors.white)),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.redAccent,
+          action: SnackBarAction(
+              label: "OK",
+              onPressed: (){}
+          ),
+        )
+      );
+      return;
+    }
+
+    setState(() {
+      isLoading = true;
+    });
+
+    var request = LoginRequest(username: email, password: password);
+    await LoginService.login(request)
+        .then((value){
+          debugPrint("Token ${value.accessToken}");
+        })
+        .catchError((error){
+          debugPrint("Error $error");
+        })
+        .whenComplete((){
+          setState(() {
+            isLoading = false;
+          });
+        });
+  }
 
 }

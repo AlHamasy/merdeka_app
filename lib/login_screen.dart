@@ -150,6 +150,16 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Colors.greenAccent,
             child: Stack(
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 72, left: 32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Welcome to"),
+                      Text("Merdeka Mobile", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18))
+                    ],
+                  ),
+                ),
                 Positioned(
                   bottom: 0,
                   left: 0,

@@ -5,16 +5,19 @@ import 'package:hive_ce/hive.dart';
 class Todo {
   String title;
   bool isDone;
+  String? subtitle;
 
   Todo({
     required this.title,
     this.isDone = false,
+    this.subtitle
   });
 
   Map<String, dynamic> toMap() {
     return {
       'title': title,
       'isDone': isDone,
+      'subtitle': subtitle,
     };
   }
 
@@ -22,6 +25,7 @@ class Todo {
     return Todo(
       title: map['title'],
       isDone: map['isDone'],
+      subtitle: map['subtitle']
     );
   }
 }
@@ -64,6 +68,7 @@ class TodoPage extends StatelessWidget {
 
   final TodoController controller = Get.put(TodoController());
   final TextEditingController titleController = TextEditingController();
+  final TextEditingController subtitleController = TextEditingController();
 
   TodoPage({super.key});
 
@@ -83,12 +88,19 @@ class TodoPage extends StatelessWidget {
                     decoration: InputDecoration(labelText: 'Todo Title'),
                   ),
                 ),
+                Expanded(
+                  child: TextField(
+                    controller: subtitleController,
+                    decoration: InputDecoration(labelText: 'Todo Subtitle'),
+                  ),
+                ),
                 IconButton(
                   icon: Icon(Icons.add),
                   onPressed: () {
                     if (titleController.text.isNotEmpty) {
                       Todo todo = Todo(
                         title: titleController.text,
+                        subtitle: subtitleController.text
                       );
                       controller.addTodo(todo);
                       titleController.clear();
@@ -106,6 +118,7 @@ class TodoPage extends StatelessWidget {
                   var todo = controller.todoList[index];
                   return ListTile(
                     title: Text(todo.title),
+                    subtitle: Text(todo.subtitle ?? "No Subtitle"),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [

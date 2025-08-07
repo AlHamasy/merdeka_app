@@ -62,6 +62,7 @@ class _NoteScreenState extends State<NoteScreen> {
               context,
               MaterialPageRoute(builder: (context) => FormScreen())
           ).then((value){
+            // trigger untuk reload data
             if (value == Helper.NEED_REFRESH){
               getAllNote();
             }

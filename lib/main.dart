@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 import 'package:merdeka_app/binding.dart';
+import 'package:merdeka_app/login_getx_screen.dart';
 import 'package:merdeka_app/news_getx_screen.dart';
-import 'package:merdeka_app/todo_screen.dart';
+import 'package:merdeka_app/note_screen.dart';
 
 void main() async{
   await Hive.initFlutter();
@@ -24,9 +25,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/",
       getPages: [
-        GetPage(name: "/", page: () => TodoPage()),
+        //GetPage(name: "/", page: () => TodoPage()),
         //GetPage(name: "/", page: () => NoteScreen(title: "Note Screen")),
-        //GetPage(name: "/", page: () => LoginGetxScreen(), binding: Binding()),
+        GetPage(name: "/", page: () => LoginGetxScreen(), binding: Binding()),
         GetPage(name: "/news", page: () => NewsGetxScreen(), binding: Binding())
       ],
     );

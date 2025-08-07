@@ -104,6 +104,7 @@ class TodoPage extends StatelessWidget {
                       );
                       controller.addTodo(todo);
                       titleController.clear();
+                      subtitleController.clear();
                     }
                   },
                 )

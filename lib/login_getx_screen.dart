@@ -131,7 +131,7 @@ class LoginGetxScreen extends GetView<LoginController> {
                     return CustomButton(
                         title: "Login",
                         onPressed: () async {
-                          //controller.login();
+                          controller.login();
 
                           // Navigator.push(
                           //     context,
@@ -140,8 +140,8 @@ class LoginGetxScreen extends GetView<LoginController> {
                           //       debugPrint("value: $value");
                           // });
 
-                          var result = await Get.toNamed("/news");
-                          debugPrint("value: $result");
+                          // var result = await Get.toNamed("/news");
+                          // debugPrint("value: $result");
                         }
                     );
                   }

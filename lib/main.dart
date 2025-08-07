@@ -5,6 +5,7 @@ import 'package:merdeka_app/controllers/login_controller.dart';
 import 'package:merdeka_app/login_getx_screen.dart';
 import 'package:merdeka_app/login_screen.dart';
 import 'package:merdeka_app/news_getx_screen.dart';
+import 'package:merdeka_app/note_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/",
       getPages: [
-        GetPage(name: "/", page: () => LoginGetxScreen(), binding: Binding()),
+        GetPage(name: "/", page: () => NoteScreen(title: "Note Screen")),
+        //GetPage(name: "/", page: () => LoginGetxScreen(), binding: Binding()),
         GetPage(name: "/news", page: () => NewsGetxScreen(), binding: Binding())
       ],
     );

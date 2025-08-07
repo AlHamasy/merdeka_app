@@ -5,7 +5,7 @@ import 'components/custom_button.dart';
 
 class LoginGetxScreen extends GetView<LoginController> {
 
-  LoginGetxScreen({super.key});
+  const LoginGetxScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -130,8 +130,18 @@ class LoginGetxScreen extends GetView<LoginController> {
                   else {
                     return CustomButton(
                         title: "Login",
-                        onPressed: () {
-                          controller.login();
+                        onPressed: () async {
+                          //controller.login();
+
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(builder: (context) => NewsGetxScreen()))
+                          //     .then((value){
+                          //       debugPrint("value: $value");
+                          // });
+
+                          var result = await Get.toNamed("/news");
+                          debugPrint("value: $result");
                         }
                     );
                   }

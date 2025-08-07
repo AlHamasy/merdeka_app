@@ -40,6 +40,8 @@ class LoginController extends GetxController{
 
       loginData.value = loginResponse;
       errorMessage.value = '';
+      // Get.offNamed("/news");
+      // Get.toNamed("/news");
     } catch (e){
       errorMessage.value = e.toString();
       Get.snackbar(

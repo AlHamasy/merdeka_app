@@ -84,7 +84,7 @@ class Source {
     id = json['id'];
     name = json['name'];
   }
-  int? id;
+  String? id;
   String? name;
 
   Map<String, dynamic> toJson() {

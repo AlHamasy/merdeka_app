@@ -12,7 +12,7 @@ class LoginGetxScreen extends GetView<LoginController> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-        resizeToAvoidBottomInset: true,
+        //resizeToAvoidBottomInset: true,
         body: formLogin1(height, width, context)
     );
   }

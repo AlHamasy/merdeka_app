@@ -20,6 +20,7 @@ class _FormScreenState extends State<FormScreen> {
   String? selectedPriority;
   List<String> selectedDays = [];
   bool isCompleted = false;
+  bool isEmptyTitle = false;
 
   // contoh json untuk dropdown
   var data = [
@@ -76,7 +77,12 @@ class _FormScreenState extends State<FormScreen> {
                   TextFormField(
                     initialValue: title,
                     decoration: InputDecoration(
-                        hintText: "Masukkan judul"
+                        hintText: "Masukkan judul",
+                        errorStyle: TextStyle(
+                          color: Colors.blue, // Ganti warna teks error di sini
+                          fontWeight: FontWeight.bold, // Bisa juga mengubah gaya font
+                          fontSize: 14, // Ukuran font bisa disesuaikan
+                        ),
                     ),
                     onChanged: (value){
                       title = value;
@@ -84,6 +90,17 @@ class _FormScreenState extends State<FormScreen> {
                     validator: (value){
                       if (value == null || value.isEmpty){
                         return "Judul tidak boleh kosong";
+                      }
+                      // Menggunakan regex untuk memvalidasi format
+                      // Misalnya: hanya mengizinkan alphanumeric (huruf dan angka)
+                      final regex = RegExp(r'^[a-zA-Z0-9 ]+$');
+                      if (!regex.hasMatch(value)) {
+                        return "Judul hanya boleh berisi huruf, angka, dan spasi";
+                      }
+
+                      // Regex untuk panjang minimal 5 karakter
+                      if (value.length < 5) {
+                        return "Judul harus memiliki minimal 5 karakter";
                       }
                       return null;
                     },

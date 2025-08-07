@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:merdeka_app/database/note_database.dart';
+import 'package:merdeka_app/detail_note_screen.dart';
 import 'package:merdeka_app/form_screen.dart';
 import 'package:merdeka_app/model/note.dart';
 
@@ -79,14 +80,14 @@ class _NoteScreenState extends State<NoteScreen> {
           var note = listNote[index];
           return GestureDetector(
             onTap: (){
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => DetailScreen(id: note.id ?? 0))
-              // ).then((value){
-              //   if (value == Helper.NEED_REFRESH){
-              //     getAllNote();
-              //   }
-              // });
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailScreen(id: note.id ?? 0))
+              ).then((value){
+                if (value == Helper.NEED_REFRESH){
+                  getAllNote();
+                }
+              });
             },
             child: Card(
               elevation: 4,
